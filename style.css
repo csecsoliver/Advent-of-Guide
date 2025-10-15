@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: 'Source Code Pro';
   font-style: normal;
@@ -8,10 +9,14 @@
     color: white;
     font-family: 'Source Code Pro', monospace;
 }
-
+body {
+    margin: 0 1rem;
+    padding: 0;
+}
 header {
     display: flex;
     align-items: center;
+    margin: 0;
 }
 header nav ul {
     display: flex;
@@ -33,4 +38,27 @@ a{
     font-weight: bold;
     color: white;
     text-decoration: none;
+}
+#days li{
+    list-style: none;
+}
+#days ul{
+    margin-block: 0;
+    padding-inline-start: 0.2rem;
+}
+
+#guide, #output{
+    width: 120%;
+}
+#challenge {
+    display: flex;
+}
+#output {
+    margin: 2rem;
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 1rem;
+}
+#guide {
+    /* overflow: scroll; */
 }
