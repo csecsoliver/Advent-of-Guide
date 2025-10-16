@@ -48,7 +48,7 @@ a{
 }
 
 #guide, #output{
-    width: 120%;
+    width: 43%;
 }
 #challenge {
     display: flex;
@@ -58,7 +58,14 @@ a{
     border: 2px solid gray;
     border-radius: 10px;
     padding: 1rem;
+    position: absolute;
+    right: 0;
 }
 #guide {
     /* overflow: scroll; */
+    word-break: break-word;
+    
+
+
+
 }
