@@ -7,6 +7,9 @@
     <script src="../../index.js"></script>
     <script src="./script.js"></script>
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>hljs.highlightAll()</script>
 </head>
 <body>
     <header>
@@ -21,9 +24,39 @@
                 <p>At the bottom of the page you can find a few buttons to log in, choose one to continue.</p>
                 <p>Next, you can download the source file you will be using today.</p>
                 <p>You might have already noticed the empty pane on the left this text. That will be the place this guide will place it's output.</p>
-                <p>In case you are on mobile, this might not appear, but you can choose desktop mode to view it</p>
+                <p>In case you are on mobile, this might not appear, but you can rotate your phone to view it.</p>
+                <h2>
+                    Let's setup your environment to solve the puzzles!
+                </h2>
+                <ol>
+                    <li>Go and install vscode</li>
+                    <li>Go and install the "Live Server" extension</li>
+                    <li>Open a folder in vscode and make a folder called "0.0" (the first number is the day, the second one is the challenge number)</li>
+                    <li>You will make a folder like this every time you start working on a problem, the reason we made one called 0.0 is to set up a template to copy every time. Just to save some effort.</li>
+                    <li>Make an index.html file with ![return]</li>
+                    <li>Insert a div with a unique id, that will serve as your output</li>
+                    <li>Make an index.js file</li>
+                    <li>Link that file to the html, after the output div by using <pre><code>script:src</code></pre></li>
+                    <li>You can now copy and paste that folder inside your workspace, renaming it to "1.1", indicating that it's the first problem of day one</li>
+                    <li>Put the file you downloaded from adventofcode.com in the "1.1" folder</li>
+                    <li>Start the Live Server with the "Go Live" button in the bottom right corner</li>
+                    <li>If you can find other ways to serve your html + js + source text files, you can do any of that.</li>
+                </ol>
+                <h2>Now on to the first task!</h2>
+                <p>I am going to assume you read the task description and the story, so I'm just going to get right into solving it.</p>
+                <ol>
+                    <li>So first we're going to need to get the file's contents, I am going to use the fetch function, and split it 
+                        <pre><code id="1">
+                            <script>
+                                let file = fetch("./input1.txt");
+                            </script>
+                        </code></pre>
+                    </li>
+                </ol>
             </div>
-            <div id="output">asd</div>
+            <div id="output">
+                <h2>Output div</h2>
+            </div>
         </section>
     </main>
 </body>

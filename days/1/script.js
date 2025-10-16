@@ -1,0 +1,1 @@
+let file = fetch("./input1.txt")

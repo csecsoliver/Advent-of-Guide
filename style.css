@@ -4,11 +4,17 @@
   font-style: normal;
   src: url(SourceCodePro-VariableFont_wght.ttf) format('woff');
 }
-*{
+*:not(pre, code, span) {
     background-color: black;
     color: white;
     font-family: 'Source Code Pro', monospace;
 }
+.span {
+    background-color: black;
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+}
+
 body {
     margin: 0 1rem;
     padding: 0;
@@ -28,6 +34,9 @@ header nav ul li {
     margin-left: 1rem;
 }
 header * {
+    font-size: 1.1rem;
+}
+h2{
     font-size: 1.1rem;
 }
 header h1 a{
@@ -58,8 +67,9 @@ a{
     border: 2px solid gray;
     border-radius: 10px;
     padding: 1rem;
-    position: absolute;
+    position: fixed;
     right: 0;
+    height: calc(100% - 10rem);
 }
 #guide {
     /* overflow: scroll; */
@@ -68,4 +78,12 @@ a{
 
 
 
+}
+@media screen and (max-width: 900px) {
+    #output {
+        display: none;
+    }
+    #guide {
+        width: 100%;
+    }
 }
