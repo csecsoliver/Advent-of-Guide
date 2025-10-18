@@ -48,17 +48,18 @@
                     <li>In-browser javascript is not an amazing environment to be doing traditional file reading in, so we need to use the fetch function in an async codeblock.</li>
                     <li>"async" means, that calling the function / running the codeblock is sent to the background to churn away by itself. This is useful because getting a file with the fetch function can take time, significantly more than a few milliseconds, in which time the broswer tab would be frozen, if not for async operations.</li>
                     <li>"fetch()" is a function to send a request to the server, in our case it is asking for a file.</li>
-                    <li>So first we're going to need to get the file's contents, I am going to use the fetch function, and split it by newline characters.
-                        <pre><code><script>async function main(){
+                    <li>So first we're going to need to get the file's contents, I am going to use the fetch function.
+                        <pre><code>async function main(){
     let file_response = await fetch("./input1.txt");
-    let file_string = await file_request.text()
+    let file_string = await file_request.text();
 }
-main();</script></code></pre>
+main();</code></pre>
                     </li>
                     <li>Here we are making an "async" main function, and running it at the end of the file. Further code is supposed to be inserted at the end of this function, unless I advise otherwise.</li>
                     <li>The first line here asks the server for the "input1.txt" file in the current directory. The fetch function returns a "Promise" which means it will return something later. We can wait for this using the await keyword. In the end we get a "Response" object.</li>
                     <li>Conveniently that response has a function called ".text()", which gets the text we needmi from the sent file. This is a function that we need to wait for too.</li>
-                    <li>We can now split the data by newlines</li>
+                    <li>We can now split the data by newlines to get a list of lines. We then can split those an add them to two separate lists.</li>
+                    
 
                 </ol>
             </div>
