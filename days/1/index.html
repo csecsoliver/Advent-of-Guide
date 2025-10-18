@@ -57,7 +57,7 @@ main();</script></code></pre>
                     </li>
                     <li>Here we are making an "async" main function, and running it at the end of the file. Further code is supposed to be inserted at the end of this function, unless I advise otherwise.</li>
                     <li>The first line here asks the server for the "input1.txt" file in the current directory. The fetch function returns a "Promise" which means it will return something later. We can wait for this using the await keyword. In the end we get a "Response" object.</li>
-                    <li>Conveniently that response has a function called ".text()", which gets the text we need from the sent file. This is a function that we need to wait for too.</li>
+                    <li>Conveniently that response has a function called ".text()", which gets the text we needmi from the sent file. This is a function that we need to wait for too.</li>
                     <li>We can now split the data by newlines</li>
 
                 </ol>

@@ -70,6 +70,7 @@ a{
     position: fixed;
     right: 0;
     height: calc(100% - 10rem);
+    overflow-x: scroll;
 }
 #guide {
     /* overflow: scroll; */
@@ -79,7 +80,7 @@ a{
 
 
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 600px) {
     #output {
         display: none;
     }
