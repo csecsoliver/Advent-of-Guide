@@ -12,6 +12,7 @@ def signal(day, task):
         g.write(f"{currid}\n")
     with open(f"{currid}.txt", "w") as h:
         h.write(f"Question regarding AoG {day}.{task}:\n\n{request.forms.text}")
+    return "Signal sent successfully! I will get to it as soon as I can."
 
 @get('/aog/list/<status>/<key>')
 def listids(status, key):
