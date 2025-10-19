@@ -5,19 +5,19 @@ async function firstout(){
   let row_list = file_string.split("\n")
   let col1 = [];
   let col2 = [];
-  for (i of row_list) {
-    line = i.split(" ");
+  for (let i of row_list) {
+    let line = i.split(" ");
     col1.push(line[0]);
     col2.push(line[line.length-1]);
   }
   col1.sort();
   col2.sort();
-  output = "";
-  for (k of col1){
+  let output = "";
+  for (let k of col1){
     output += k + ", ";
   }
   output += "<br><br>";
-  for (k of col2){
+  for (let k of col2){
     output += k + ", ";
   }
   document.getElementById("output").innerHTML += output;
@@ -30,8 +30,8 @@ async function secondout() {
   let row_list = file_string.split("\n")
   let col1 = [];
   let col2 = [];
-  for (i of row_list) {
-    line = i.split(" ");
+  for (let i of row_list) {
+    let line = i.split(" ");
     col1.push(line[0]);
     col2.push(line[line.length-1]);
   }
@@ -50,13 +50,13 @@ async function thirdout() {
   let row_list = file_string.split("\n")
   let col1 = [];
   let col2 = [];
-  for (i of row_list) {
-    line = i.split(" ");
+  for (let i of row_list) {
+    let line = i.split(" ");
     col1.push(line[0]);
     col2.push(line[line.length-1]);
   }
   const occurences = {};
-  for (i of col1){
+  for (let i of col1){
     occurences[i] = occurences[i] ? occurences[i] + 1 : 1;
   }  
   document.getElementById("output").innerHTML += JSON.stringify(occurences);
@@ -68,19 +68,19 @@ async function fourthout(){
   let row_list = file_string.split("\n")
   let col1 = [];
   let col2 = [];
-  for (i of row_list) {
-    line = i.split(" ");
+  for (let i of row_list) {
+    let line = i.split(" ");
     col1.push(line[0]);
     col2.push(line[line.length-1]);
   }
   const occurences = {};
     
-  for (i of col1){
+  for (let i of col1){
     occurences[i] = occurences[i] ? occurences[i] + 1 : 1;
   }
 
   let sim_score = 0;
-  for (j of col2){
+  for (let j of col2){
     sim_score += occurences[j]? occurences[j]*j: 0;
   }
   document.getElementById("output").innerHTML += sim_score;

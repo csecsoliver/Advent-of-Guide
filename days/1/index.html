@@ -27,28 +27,28 @@
                         href="https://adventofcode.com/2024/day/1">https://adventofcode.com/2024/day/1</a></p>
                 <p>At the bottom of the page you can find a few buttons to log in, choose one to continue.</p>
                 <p>Next, you can download the source file you will be using today.</p>
-                <p>You might have already noticed the empty pane on the left this text. That will be the place this
+                <p>You might have already noticed the empty pane on the left of this text. That will be the place this
                     guide will place its output.</p>
                 <p>In case you are on mobile, this might not appear, but you can rotate your phone to view it.</p>
                 <h2>
-                    Lets setup your environment to solve the puzzles!
+                    Let's set up your environment to solve the puzzles!
                 </h2>
                 <ol>
-                    <li>Go and install vscode</li>
+                    <li>Install Visual Studio Code (VS Code)</li>
                     <li>Go and install the "Live Server" extension</li>
                     <li>Open a folder in vscode and make a folder called "0.0" (the first number is the day, the second
                         one is the challenge number)</li>
                     <li>You will make a folder like this every time you start working on a problem; the reason we made
                         one called 0 is to set up a template to copy every time. Just to save some effort.</li>
-                    <li>Make an index.html file with ![return]</li>
+                    <li>Make an index.html file with html:5</li>
                     <li>Insert a div with a unique id, that will serve as your output</li>
                     <li>Make an index.js file</li>
                     <li>Link that file to the HTML, after the output div by using
-                        <pre><code>script:src</code></pre>
+                        <pre><code>&lt;script src="..."&gt;&lt;/script&gt;</code></pre>
                     </li>
                     <li>You can now copy and paste that folder inside your workspace, renaming it to "1", indicating
                         that it has the problems of day one</li>
-                    <li>Put the file you downloaded from <a href="https://adventofcode.com/2024/day/1">adventofcode.com</a> in the "1" folder and name it "output1.txt"</li>
+                    <li>Put the file you downloaded from <a href="https://adventofcode.com/2024/day/1">adventofcode.com</a> in the "1" folder and name it "input1.txt"</li>
                     <li>Start the Live Server with the "Go Live" button in the bottom right corner</li>
                     <li>If you can find other ways to serve your html + js + source text files, you can do any of that.
                     </li>
@@ -108,7 +108,7 @@ main();</code></pre>
   }
   document.getElementById("output").innerHTML += output;</code></pre>
                     <button onclick="firstout()">Run code so far</button>
-                    <li>Notice how we made a string to output at the end: In my experience (firefox), adding to the eéement every time would gobble up more than 16GB of my RAM and take ages, but this way it's a lot more efficient.</li>
+                    <li>Notice how we made a string to output at the end: In my experience (firefox), adding to the element every time would gobble up more than 16GB of my RAM and take ages, but this way it's a lot more efficient.</li>
                     <li>Let's delete the code now after the sort statements and keep going with calculating the difference</li>
                     <pre><code>  let diff = 0;
   for (let index = 0; index < col1.length; index++) {
@@ -116,8 +116,8 @@ main();</code></pre>
   }
   document.getElementById("output").innerHTML += diff;</code></pre>
                     <button onclick="secondout()">Run code so far</button>
-                    <li>We made a variable for storing the difference, and then made a for loop to go for the lenght of one of the arrays. This is fine, because both of them are the same length.</li>
-                    <li>We then add the difference (that we need to take the absoluta value of) to "diff" and then print it.</li>
+                    <li>We made a variable for storing the difference, and then made a for loop to go for the length of one of the arrays. This is fine, because both of them are the same length.</li>
+                    <li>We then add the difference (that we need to take the absolute value of) to "diff" and then print it.</li>
                     <li>This makes us arrive at the end of the first puzzle for the first day.</li>
                     <li>You should take your final value and submit it on the adventofcode website to continue to the second puzzle's instructions.</li>
                 </ol>

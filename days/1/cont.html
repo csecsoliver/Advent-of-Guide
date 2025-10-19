@@ -27,7 +27,7 @@
                         files.</li>
                     <li>Let's first collect the occurences of numbers in the first array.</li>
                     <pre><code>  const occurences = {};
-  for (i of col1){
+  for (let i of col1){
     occurences[i] = occurences[i] ? occurences[i] + 1 : 1;
   }
   document.getElementById("output").innerHTML += JSON.stringify(occurences);</code></pre>
@@ -37,7 +37,7 @@
                     <li>"JSON.stringify()" takes a javascript object and makes it into a simple string we can read.</li>
                     <li>Now we need to sum up the numbers based on this object's content, and let's print the result out while we're at it.</li>
                     <pre><code>  let sim_score = 0;
-  for (j of col2){
+  for (let j of col2){
     sim_score += occurences[j]? occurences[j]*j: 0;
   }
   document.getElementById("output").innerHTML += sim_score;</code></pre>

@@ -26,7 +26,7 @@
 					<li>Copy and paste the folder "0" we created last time, and start the live server.</li>
 					<li>Rename the folder to "2", indicating it has the problems of day 2.</li>
 					<li>Download the input file from <a href="https://adventofcode.com/2024/day/2">https://adventofcode.com/2024/day/2</a>
-						and place it in the "2" folder, naming it "output2.txt".
+						and place it in the "2" folder, naming it "input2.txt".
 					</li>
 				
 				
@@ -85,7 +85,7 @@ main();</code></pre>
 					</ol>
 					<li>If the difference is unsafe, we add one to the counter and break out of the loop.</li>
 					<li>The next and final step is printing out the number of safe lines. This is done outside the two for loops, at the end of the main() function.</li>
-					<pre><code>  document.getElementById("output").innerHTML += file_lines-unsafe_num;</code></pre>
+					<pre><code>  document.getElementById("output").innerHTML += file_lines.length - unsafe_num;</code></pre>
 					<button onclick="secondout()">Run code</button>
 					<h2><a href="./cont.html">Now go submit this on the website and continue to the second part of the challenge!</a></h2>
 				</ol>
