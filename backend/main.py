@@ -17,7 +17,7 @@ def signal(day, task):
 def listids(status, key):
     with open(".key", "r") as f:
         sentkey = f.read()
-        if sentkey != key:
+        if sentkey.strip() != key.strip():
             print(key + "!=" + sentkey)
             response.status = 401
             return "Unauthorized"
@@ -37,7 +37,7 @@ def listids(status, key):
 @get('/aog/read/<signalid>/<key>')
 def read(signalid, key):
     with open(".key", "r") as f:
-        if f.read() != key:
+        if f.read().strip() != key.strip():
             response.status = 401
             return "Unauthorized"
     try:
