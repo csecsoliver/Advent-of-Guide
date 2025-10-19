@@ -81,7 +81,7 @@ async function fourthout(){
 
   let sim_score = 0;
   for (j of col2){
-    sim_score += occurences[j]? occurences[j]: 0;
+    sim_score += occurences[j]? occurences[j]*j: 0;
   }
   document.getElementById("output").innerHTML += sim_score;
 }

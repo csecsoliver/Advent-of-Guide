@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Day 2</title>
+	<script src="../../index.js"></script>
+	
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/dark.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+	<script>hljs.highlightAll()</script>
+</head>
+
+<body>
+	<header>
+		<h1><a href="">Day 2</a></h1>
+		<a href="./asd.txt" download="fgh.txt"></a>
+	</header>
+	<main>
+		<section id="challenge">
+			<div id="guide">
+				<h2>Now we're onto the second day! Let's do some setup.</h2>
+				<ol>
+					<li>Copy and paste the folder "0" we created last time, and start the live server.</li>
+					<li>Rename the folder to "2", indicating it has the problems of day 2.</li>
+					<li>Download the input file from <a href="https://adventofcode.com/2024/day/2">https://adventofcode.com/2024/day/2</a>
+						and place it in the "2" folder, naming it "output2.txt".
+					</li>
+				
+				
+				</ol>
+				<h2>Let's get started with the first task!</h2>
+				<ol>
+					<li>I forgot to mention it, but do read the instructions this time too.</li>
+					<li>We need to analyze the rows and tell if they are safe or not.</li>
+					<li>Similarly to last time, let's read the file using the fetch function using an async function as
+						the wrapper, and split the lines into an array.
+					</li>
+					<pre><code>async function main(){
+  let file_response = await fetch("./input2.txt");
+  let file_string = await file_response.text();
+  let file_lines = file_string.split("\n");
+}
+main();</code></pre>
+					<li>Next, we need to create a variable to track the unsafe lines, iterate through the lines with
+						another for of loop and split the datapoints by whitespaces.
+					</li>
+					<pre><code>  let unsafe_num = 0;
+  for (let i of file_lines) {
+    let data_list = i.split(" ");
+  }</code></pre>
+					<li>Now still inside this for loop, we need to convert the array of strings into an array of numbers.
+					</li>
+					<pre><code>    data_list = data_list.map(text => Number(text));</code></pre>
+					<li>The ".map()"
+						function takes one argument for our purposes, a function... <br><br>
+						This is called a "lambda" function for... well... reasons. The syntax is "(arguments) => { return some_value; }. This, however, can be simplified to "argument => some_value".
+						<br><br>
+						...which it calls for every element in the array, and returns an array built from the values that function returns.
+						
+					</li>
+					<li>Now we need to do the checking:</li>
+					<pre><code>    let ascending = (data_list[0] - data_list[1]) < 0;
+    let last;
+    for (let j of data_list) {
+      if (last === undefined){
+        last = j;
+        continue;
+      }
+      if (Math.abs(last - j) > 3 || Math.abs(last - j) === 0 || (((last - j) < 0)) !== ascending) { // last-j is negative if j is larger, so it's ascending
+        unsafe_num++;
+        break;
+      }
+      last = j;
+    }</code></pre>
+					<li>We create two variables here, one checking for the direction of the change and one to store the last number in the array.</li>
+					<li>The first if statement is there to handle the start of the loop and initialize the "last" variable.</li>
+					<li>The second if statement marks the line unsafe if one of the three things occurs.</li>
+					<ol>
+						<li>The difference is larger than 3</li>
+						<li>The difference is zero</li>
+						<li>The direction of change doesn't match the initially determined one.</li>
+					</ol>
+					<li>If the difference is unsafe, we add one to the counter and break out of the loop.</li>
+					<li>The next and final step is printing out the number of safe lines. This is done outside the two for loops, at the end of the main() function.</li>
+					<pre><code>  document.getElementById("output").innerHTML += file_lines-unsafe_num;</code></pre>
+					<button onclick="secondout()">Run code</button>
+					<h2><a href="./cont.html">Now go submit this on the website and continue to the second part of the challenge!</a></h2>
+				</ol>
+			</div>
+			<div id="output">
+				<h2>Output div</h2>
+			</div>
+		</section>
+	</main>
+	<script src="./script.js"></script>
+</body>
+
+</html>

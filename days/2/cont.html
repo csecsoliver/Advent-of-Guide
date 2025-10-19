@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 part 2</title>
+    <script src="../../index.js"></script>
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>hljs.highlightAll()</script>
+</head>
+
+<body>
+    <header>
+        <h1><a href="">Day 2 part 2</a></h1>
+    </header>
+    <main>
+        <section id="challenge">
+            <div id="guide">
+                <h2>Let's get into it!</h2>
+	            <ol>
+		            <li>I am going to do this the bruteforce way and check every possible skipping of values. This might be possible by checking if only one is causing the unsafe nature, but that seems complicated af.</li>
+		            <li>This time I have separated the safe-check into another function we can call multiple times:</li>
+		            <pre><code>function is_safe(data_list){
+  let ascending = (data_list[0] - data_list[1]) < 0;
+  let last;
+  for (let j of data_list) {
+    if (last === undefined){
+      last = j;
+      continue;
+    }
+    if (Math.abs(last - j) > 3 || Math.abs(last - j) === 0 || (((last - j) < 0)) !== ascending) {
+      return false;
+    }
+    last = j;
+  }
+  return true;
+}</code></pre>
+		            <li>You can put this at the end of your js file. The only thing I changed aside from copying it is make it return a true/false value instead of adding one to the unsafe counter.</li>
+		            <li>Next we need to modify the main function:</li>
+		            <ol>
+			            <li>If the line is safe, great! We can continue to the next line.</li>
+			            <li>If not, we iterate through the possible skips. If one or more are safe, great! We can continue to the next line.</li>
+			            <li>If not, we add one to the unsafe counter.</li>
+		            </ol>
+		            <pre><code>    if (!is_safe(data_list)) {
+      let unsafe_copies = 0;
+      for (let j = 0; j < data_list.length; j++) {
+        let one_ignored = data_list.filter((value, index) => index !== j);
+        if (!is_safe(one_ignored)){
+          unsafe_copies ++; // This one is the one indicating the number of unsafe permutations of this one line.
+        }
+      }
+      if (unsafe_copies === data_list.length) {
+        unsafe_num ++; // this one is the global
+      }
+    }</code></pre>
+		            <li>I have only replaced the part I moved out to the separate "is_safe()" function, so we put this into the main for loop that remained, after the conversion to numbers.</li>
+		            <button onclick="thirdout()">Run code</button>
+		            <h2><a href="../3/index.html">Now go submit this on the website and continue to the third day!</a></h2>
+	            </ol>
+            </div>
+            <div id="output">
+                <h2>Output div</h2>
+            </div>
+        </section>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>

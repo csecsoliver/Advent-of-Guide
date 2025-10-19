@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1. Day</title>
+    <title>Day 1 part 2</title>
     <script src="../../index.js"></script>
 
     <link rel="stylesheet" href="../../style.css">
@@ -15,7 +15,7 @@
 
 <body>
     <header>
-        <h1><a href="">Day 0 part 1</a></h1>
+        <h1><a href="">Day 1 part 2</a></h1>
         <a href="./asd.txt" download="fgh.txt"></a>
     </header>
     <main>
@@ -32,17 +32,22 @@
   }
   document.getElementById("output").innerHTML += JSON.stringify(occurences);</code></pre>
   <button onclick="thirdout()">Run code so far</button>
-                    <li>The ?: operator is quite the useful function, it checks the expression written before the question mark, if true executes the part before the colon, if false, it executes the part after.</li>
-                    <li>Here we check for the existence of a number in out object (which you might know as a dictionary from other langunages, but it is also what arrays, classes and other stuff inherit), and if it exists we add one, if not we set it to 1.</li>
+                    <li>The ?: operator is quite a useful function, it checks the expression written before the question mark, if true, executes the part before the colon, if false, it executes the part after.</li>
+                    <li>Here we check for the existence of a number in our object (which you might know as a dictionary from other languages, but it is also what arrays, classes and other stuff inherit), and if it exists we add one, if not we set it to 1.</li>
                     <li>"JSON.stringify()" takes a javascript object and makes it into a simple string we can read.</li>
                     <li>Now we need to sum up the numbers based on this object's content, and let's print the result out while we're at it.</li>
                     <pre><code>  let sim_score = 0;
   for (j of col2){
-    sim_score += occurences[j];
+    sim_score += occurences[j]? occurences[j]*j: 0;
   }
   document.getElementById("output").innerHTML += sim_score;</code></pre>
                     <button onclick="fourthout()">Run code so far</button>
+	                <li>This time we go through the second list and add the number multiplied with the occurrences of it in the other list.</li>
+	                <li>We do need to check the existence of the number this time too as undefined + 1 is NaN.</li>
+	                <li>Now with that you should have gotten the correct sum printed out.</li>
+	                <li>Submit this one too on the advent of code website.</li>
                 </ol>
+	            <h2><a href="../2/index.html">Continue to the next day</a></h2>
             </div>
             <div id="output">
                 <h2>Output div</h2>

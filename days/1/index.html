@@ -28,27 +28,27 @@
                 <p>At the bottom of the page you can find a few buttons to log in, choose one to continue.</p>
                 <p>Next, you can download the source file you will be using today.</p>
                 <p>You might have already noticed the empty pane on the left this text. That will be the place this
-                    guide will place it's output.</p>
+                    guide will place its output.</p>
                 <p>In case you are on mobile, this might not appear, but you can rotate your phone to view it.</p>
                 <h2>
-                    Let's setup your environment to solve the puzzles!
+                    Lets setup your environment to solve the puzzles!
                 </h2>
                 <ol>
                     <li>Go and install vscode</li>
                     <li>Go and install the "Live Server" extension</li>
                     <li>Open a folder in vscode and make a folder called "0.0" (the first number is the day, the second
                         one is the challenge number)</li>
-                    <li>You will make a folder like this every time you start working on a problem, the reason we made
-                        one called 0.0 is to set up a template to copy every time. Just to save some effort.</li>
+                    <li>You will make a folder like this every time you start working on a problem; the reason we made
+                        one called 0 is to set up a template to copy every time. Just to save some effort.</li>
                     <li>Make an index.html file with ![return]</li>
                     <li>Insert a div with a unique id, that will serve as your output</li>
                     <li>Make an index.js file</li>
-                    <li>Link that file to the html, after the output div by using
+                    <li>Link that file to the HTML, after the output div by using
                         <pre><code>script:src</code></pre>
                     </li>
-                    <li>You can now copy and paste that folder inside your workspace, renaming it to "1.1", indicating
-                        that it's the first problem of day one</li>
-                    <li>Put the file you downloaded from adventofcode.com in the "1.1" folder, and name it "output1.txt"</li>
+                    <li>You can now copy and paste that folder inside your workspace, renaming it to "1", indicating
+                        that it has the problems of day one</li>
+                    <li>Put the file you downloaded from <a href="https://adventofcode.com/2024/day/1">adventofcode.com</a> in the "1" folder and name it "output1.txt"</li>
                     <li>Start the Live Server with the "Go Live" button in the bottom right corner</li>
                     <li>If you can find other ways to serve your html + js + source text files, you can do any of that.
                     </li>
@@ -57,11 +57,11 @@
                 <p>I am going to assume you read the task description and the story, so I'm just going to get right into
                     solving it.</p>
                 <ol>
-                    <li>In-browser javascript is not an amazing environment to be doing traditional file reading in, so
+                    <li>In-browser JavaScript is not an amazing environment to be doing traditional file reading in, so
                         we need to use the fetch function in an async codeblock.</li>
-                    <li>"async" means, that calling the function / running the codeblock is sent to the background to
+                    <li>"async" means that calling the function / running the codeblock is sent to the background to
                         churn away by itself. This is useful because getting a file with the fetch function can take
-                        time, significantly more than a few milliseconds, in which time the broswer tab would be frozen,
+                        time, significantly more than a few milliseconds, in which time the browser tab would be frozen,
                         if not for async operations.</li>
                     <li>"fetch()" is a function to send a request to the server, in our case it is asking for a file.
                     </li>
@@ -77,15 +77,15 @@ main();</code></pre>
                     <li>The first line here asks the server for the "input1.txt" file in the current directory. The
                         fetch function returns a "Promise" which means it will return something later. We can wait for
                         this using the await keyword. In the end we get a "Response" object.</li>
-                    <li>Conveniently that response has a function called ".text()", which gets the text we needmi from
+                    <li>Conveniently, that response has a function called ".text()", which gets the text we need from
                         the sent file. This is a function that we need to wait for too.</li>
-                    <li>We can now split the data by newlines to get an array of lines. We then can split those an add
+                    <li>We can now split the data by newlines to get an array of lines. We then can split those and add
                         them to two separate arrays.</li>
                     <pre><code>  let row_list = file_string.split("\n")
   let col1 = [];
   let col2 = [];
-  for (i of row_list) {
-    line = i.split(" ");
+  for (let i of row_list) {
+    let line = i.split(" ");
     col1.push(line[0]);
     col2.push(line[line.length-1]);
   }</code></pre>
@@ -94,16 +94,16 @@ main();</code></pre>
                         the code by getting the first and the last one of them.</li>
                     <li>This now creates the two location arrays we need to operate on.</li>
                     <li>Next would be sorting the lists. This can be done manually, but the effort is not worth it, so
-                        let's just use the built in sort function on both lists. This time let's also print the arrays
+                        let's just use the built-in sort function on both lists. This time let's also print the arrays
                     </li>
                     <pre><code>  col1.sort();
   col2.sort();
-  output = "";
-  for (k of col1){
+  let output = "";
+  for (let k of col1){
     output += k + ", ";
   }
   output += "<br><br>";
-  for (k of col2){
+  for (let k of col2){
     output += k + ", ";
   }
   document.getElementById("output").innerHTML += output;</code></pre>
