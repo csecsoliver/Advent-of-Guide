@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1. Day</title>
     <script src="../../index.js"></script>
-    <script src="./script.js"></script>
+
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <script>hljs.highlightAll()</script>
 </head>
+
 <body>
     <header>
         <h1><a href="">Day 1</a></h1>
@@ -19,11 +21,14 @@
         <section id="challenge">
             <div id="guide">
                 <h2>Introduction</h2>
-                <p>This is the first challenge in the series of 25 you will hopefully complete. You should come back each day to learn about the next one!</p>
-                <p>Go read the related story at <a href="https://adventofcode.com/2024/day/1">https://adventofcode.com/2024/day/1</a></p>
+                <p>This is the first challenge in the series of 25 you will hopefully complete. You should come back
+                    each day to learn about the next one!</p>
+                <p>Go read the related story at <a
+                        href="https://adventofcode.com/2024/day/1">https://adventofcode.com/2024/day/1</a></p>
                 <p>At the bottom of the page you can find a few buttons to log in, choose one to continue.</p>
                 <p>Next, you can download the source file you will be using today.</p>
-                <p>You might have already noticed the empty pane on the left this text. That will be the place this guide will place it's output.</p>
+                <p>You might have already noticed the empty pane on the left this text. That will be the place this
+                    guide will place it's output.</p>
                 <p>In case you are on mobile, this might not appear, but you can rotate your phone to view it.</p>
                 <h2>
                     Let's setup your environment to solve the puzzles!
@@ -31,42 +36,99 @@
                 <ol>
                     <li>Go and install vscode</li>
                     <li>Go and install the "Live Server" extension</li>
-                    <li>Open a folder in vscode and make a folder called "0.0" (the first number is the day, the second one is the challenge number)</li>
-                    <li>You will make a folder like this every time you start working on a problem, the reason we made one called 0.0 is to set up a template to copy every time. Just to save some effort.</li>
+                    <li>Open a folder in vscode and make a folder called "0.0" (the first number is the day, the second
+                        one is the challenge number)</li>
+                    <li>You will make a folder like this every time you start working on a problem, the reason we made
+                        one called 0.0 is to set up a template to copy every time. Just to save some effort.</li>
                     <li>Make an index.html file with ![return]</li>
                     <li>Insert a div with a unique id, that will serve as your output</li>
                     <li>Make an index.js file</li>
-                    <li>Link that file to the html, after the output div by using <pre><code>script:src</code></pre></li>
-                    <li>You can now copy and paste that folder inside your workspace, renaming it to "1.1", indicating that it's the first problem of day one</li>
-                    <li>Put the file you downloaded from adventofcode.com in the "1.1" folder</li>
+                    <li>Link that file to the html, after the output div by using
+                        <pre><code>script:src</code></pre>
+                    </li>
+                    <li>You can now copy and paste that folder inside your workspace, renaming it to "1.1", indicating
+                        that it's the first problem of day one</li>
+                    <li>Put the file you downloaded from adventofcode.com in the "1.1" folder, and name it "output1.txt"</li>
                     <li>Start the Live Server with the "Go Live" button in the bottom right corner</li>
-                    <li>If you can find other ways to serve your html + js + source text files, you can do any of that.</li>
+                    <li>If you can find other ways to serve your html + js + source text files, you can do any of that.
+                    </li>
                 </ol>
                 <h2>Now on to the first task!</h2>
-                <p>I am going to assume you read the task description and the story, so I'm just going to get right into solving it.</p>
+                <p>I am going to assume you read the task description and the story, so I'm just going to get right into
+                    solving it.</p>
                 <ol>
-                    <li>In-browser javascript is not an amazing environment to be doing traditional file reading in, so we need to use the fetch function in an async codeblock.</li>
-                    <li>"async" means, that calling the function / running the codeblock is sent to the background to churn away by itself. This is useful because getting a file with the fetch function can take time, significantly more than a few milliseconds, in which time the broswer tab would be frozen, if not for async operations.</li>
-                    <li>"fetch()" is a function to send a request to the server, in our case it is asking for a file.</li>
+                    <li>In-browser javascript is not an amazing environment to be doing traditional file reading in, so
+                        we need to use the fetch function in an async codeblock.</li>
+                    <li>"async" means, that calling the function / running the codeblock is sent to the background to
+                        churn away by itself. This is useful because getting a file with the fetch function can take
+                        time, significantly more than a few milliseconds, in which time the broswer tab would be frozen,
+                        if not for async operations.</li>
+                    <li>"fetch()" is a function to send a request to the server, in our case it is asking for a file.
+                    </li>
                     <li>So first we're going to need to get the file's contents, I am going to use the fetch function.
                         <pre><code>async function main(){
-    let file_response = await fetch("./input1.txt");
-    let file_string = await file_request.text();
+  let file_response = await fetch("./input1.txt");
+  let file_string = await file_response.text();
 }
 main();</code></pre>
                     </li>
-                    <li>Here we are making an "async" main function, and running it at the end of the file. Further code is supposed to be inserted at the end of this function, unless I advise otherwise.</li>
-                    <li>The first line here asks the server for the "input1.txt" file in the current directory. The fetch function returns a "Promise" which means it will return something later. We can wait for this using the await keyword. In the end we get a "Response" object.</li>
-                    <li>Conveniently that response has a function called ".text()", which gets the text we needmi from the sent file. This is a function that we need to wait for too.</li>
-                    <li>We can now split the data by newlines to get a list of lines. We then can split those an add them to two separate lists.</li>
-                    
-
+                    <li>Here we are making an "async" main function, and running it at the end of the file. Further code
+                        is supposed to be inserted at the end of this function, unless I advise otherwise.</li>
+                    <li>The first line here asks the server for the "input1.txt" file in the current directory. The
+                        fetch function returns a "Promise" which means it will return something later. We can wait for
+                        this using the await keyword. In the end we get a "Response" object.</li>
+                    <li>Conveniently that response has a function called ".text()", which gets the text we needmi from
+                        the sent file. This is a function that we need to wait for too.</li>
+                    <li>We can now split the data by newlines to get an array of lines. We then can split those an add
+                        them to two separate arrays.</li>
+                    <pre><code>  let row_list = file_string.split("\n")
+  let col1 = [];
+  let col2 = [];
+  for (i of row_list) {
+    line = i.split(" ");
+    col1.push(line[0]);
+    col2.push(line[line.length-1]);
+  }</code></pre>
+                    <li>The "of" in the for loop means "i" becomes a string for every line in the "row_list". This can
+                        now be split by whitespaces, but there is more than one of those in every row, so I simplified
+                        the code by getting the first and the last one of them.</li>
+                    <li>This now creates the two location arrays we need to operate on.</li>
+                    <li>Next would be sorting the lists. This can be done manually, but the effort is not worth it, so
+                        let's just use the built in sort function on both lists. This time let's also print the arrays
+                    </li>
+                    <pre><code>  col1.sort();
+  col2.sort();
+  output = "";
+  for (k of col1){
+    output += k + ", ";
+  }
+  output += "<br><br>";
+  for (k of col2){
+    output += k + ", ";
+  }
+  document.getElementById("output").innerHTML += output;</code></pre>
+                    <button onclick="firstout()">Run code so far</button>
+                    <li>Notice how we made a string to output at the end: In my experience (firefox), adding to the eéement every time would gobble up more than 16GB of my RAM and take ages, but this way it's a lot more efficient.</li>
+                    <li>Let's delete the code now after the sort statements and keep going with calculating the difference</li>
+                    <pre><code>  let diff = 0;
+  for (let index = 0; index < col1.length; index++) {
+    diff += Math.abs(col1[index] - col2[index]);
+  }
+  document.getElementById("output").innerHTML += diff;</code></pre>
+                    <button onclick="secondout()">Run code so far</button>
+                    <li>We made a variable for storing the difference, and then made a for loop to go for the lenght of one of the arrays. This is fine, because both of them are the same length.</li>
+                    <li>We then add the difference (that we need to take the absoluta value of) to "diff" and then print it.</li>
+                    <li>This makes us arrive at the end of the first puzzle for the first day.</li>
+                    <li>You should take your final value and submit it on the adventofcode website to continue to the second puzzle's instructions.</li>
                 </ol>
+                <h2><a href="./cont.html">Continue to the next puzzle</a></h2>
             </div>
             <div id="output">
                 <h2>Output div</h2>
             </div>
         </section>
     </main>
+    <script src="./script.js"></script>
 </body>
+
 </html>
