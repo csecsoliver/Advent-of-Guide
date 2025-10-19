@@ -16,7 +16,9 @@ def signal(day, task):
 @get('/aog/list/<status>/<key>')
 def listids(status, key):
     with open(".key", "r") as f:
-        if f.read() != key:
+        sentkey = f.read()
+        if sentkey != key:
+            print(key + "!=" + sentkey)
             response.status = 401
             return "Unauthorized"
     body = "<pre>"
@@ -55,4 +57,4 @@ def read(signalid, key):
     return f"<pre>{content}</pre>"
 
 if __name__ == '__main__':
-    run(host='localhost', port=25551)
+    run(host='0.0.0.0', port=25551)
